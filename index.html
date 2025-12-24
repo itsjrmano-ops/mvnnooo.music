@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVNNOOO - Official Website | Egyptian Trap & Drill Artist</title>
+    <meta name="description" content="MVNNOOO - Alexandria-born artist shaping Egyptian Trap, Drill & Electronic Street Sound since 2020">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #ff0050;
+            --secondary: #00ffff;
+            --dark: #0a0a0a;
+            --darker: #050505;
+            --light: #ffffff;
+            --gray: #888;
+        }
+
+        body {
+            font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .bg-animated {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, #0a0a0a, #1a0a1a, #0a0a1a, #0a0a0a);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            z-index: -1;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 0, 80, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 250px;
+        }
+
+        .hero-banner-cover {
+            position: absolute;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            height: 400px;
+            background-image: url('https://i.imgur.com/placeholder.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: 0;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .hero-banner-cover::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to bottom, transparent, var(--darker));
+        }
+
+        .hero-content {
+            z-index: 2;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
+            position: relative;
+            margin-top: -100px;
+        }
+
+        .profile-section {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid var(--darker);
+            box-shadow: 0 0 30px rgba(255, 0, 80, 0.5);
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: 900;
+            position: relative;
+            z-index: 3;
+        }
+
+        .banner-upload-hint {
+            position: absolute;
+            top: 250px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            border: 2px dashed var(--primary);
+            color: var(--gray);
+            font-size: 0.9rem;
+            z-index: 1;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 0, 80, 0.5);
+            letter-spacing: 3px;
+            position: relative;
+        }
+
+        .hero h1::before {
+            content: 'MVNNOOO';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff0050, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            z-index: -1;
+            filter: blur(20px);
+            opacity: 0.5;
+        }
+
+        .official-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 0 20px rgba(255, 0, 80, 0.3);
+        }
+
+        .hero-platforms {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .hero-platform-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 0, 80, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--light);
+            font-size: 1.3rem;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(255, 0, 80, 0.3);
+        }
+
+        .hero-platform-icon:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: scale(1.15) translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 0, 80, 0.6);
+        }
+
+        .platform-icons-row {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .platform-icon-large {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(255, 0, 80, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--light);
+            font-size: 1.4rem;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+
+        .platform-icon-large:hover {
+            background: linear-gradient(135deg, var(--primary), #ff3366);
+            border-color: var(--primary);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(255, 0, 80, 0.5);
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #ff3366);
+            color: var(--light);
+            box-shadow: 0 5px 20px rgba(255, 0, 80, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 0, 80, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .bio-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .bio-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        .bio-text h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .bio-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 0, 80, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(255, 0, 80, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        .music-platforms {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .platform-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 0, 80, 0.3);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--light);
+            font-weight: 600;
+        }
+
+        .platform-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 0, 80, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--light);
+            font-size: 1.5rem;
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: rotate(360deg);
+        }
+
+        .genre-tags {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .tag {
+            background: rgba(255, 0, 80, 0.2);
+            border: 1px solid var(--primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 0, 80, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--gray);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 0, 80, 0.3);
+            border-radius: 10px;
+            color: var(--light);
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        footer {
+            background: var(--darker);
+            border-top: 1px solid rgba(255, 0, 80, 0.2);
+            padding: 2rem 5%;
+            text-align: center;
+            color: var(--gray);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .bio-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        .glitch {
+            position: relative;
+            animation: glitch 3s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 90%, 100% {
+                text-shadow: none;
+            }
+            92% {
+                text-shadow: 3px 0 var(--primary), -3px 0 var(--secondary);
+            }
+            94% {
+                text-shadow: -3px 0 var(--primary), 3px 0 var(--secondary);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animated"></div>
+    <div class="grain"></div>
+
+    <header>
+        <nav>
+            <div class="logo">MVNNOOO</div>
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#about">عن الفنان</a></li>
+                <li><a href="#music">الموسيقى</a></li>
+                <li><a href="#stats">الإحصائيات</a></li>
+                <li><a href="#contact">تواصل</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-banner-cover"></div>
+        <div class="banner-upload-hint">📸 ضع رابط صورتك هنا في الكود: hero-banner-cover background-image</div>
+        
+        <div class="hero-content">
+            <div class="profile-section">
+                <div class="profile-image">M</div>
+                <div class="official-badge">🎤 Official Account</div>
+            </div>
+            
+            <div class="platform-icons-row">
+                <a href="https://play.anghami.com/artist/26394054" target="_blank" class="platform-icon-large" title="Anghami">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><text x="50%" y="70%" text-anchor="middle" font-size="16">A</text></svg>
+                </a>
+                <a href="https://music.apple.com/eg/artist/mvnnooo/1856084660?l=ar" target="_blank" class="platform-icon-large" title="Apple Music">🍎</a>
+                <a href="https://open.spotify.com/intl-ar/artist/5OpjwqoP6EVF7DiEgxbw6N" target="_blank" class="platform-icon-large" title="Spotify">
+                    <svg width="24" height="24" fill="#1DB954" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/></svg>
+                </a>
+                <a href="https://www.youtube.com/@MVNNOOO" target="_blank" class="platform-icon-large" title="YouTube">▶️</a>
+                <a href="https://deezer.com/artist/358069852" target="_blank" class="platform-icon-large" title="Deezer">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><text x="50%" y="70%" text-anchor="middle" font-size="16">D</text></svg>
+                </a>
+            </div>
+
+            <h1 class="glitch">MVNNOOO</h1>
+            
+            <div class="platform-icons-row" style="margin-top: 1rem;">
+                <a href="https://www.instagram.com/mvnnoooo/" target="_blank" class="platform-icon-large" title="Instagram">📷</a>
+                <a href="https://www.facebook.com/mvnnoooo" target="_blank" class="platform-icon-large" title="Facebook">📘</a>
+                <a href="https://www.tiktok.com/@mvnnoooo" target="_blank" class="platform-icon-large" title="TikTok">🎵</a>
+                <a href="https://music.apple.com/eg/artist/mvnnooo/1856084660?l=ar" target="_blank" class="platform-icon-large" title="Apple Music">🎧</a>
+            </div>
+
+            <div style="margin: 2rem 0; padding: 1.5rem; background: rgba(0, 0, 0, 0.4); border-radius: 15px; border: 1px solid rgba(255, 0, 80, 0.3); backdrop-filter: blur(10px);">
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #ddd; margin-bottom: 1rem;">
+                    MVNNOOO Alexandria-born artist (El Agamy, 1992) shaping a new wave in Egyptian Trap, Drill & Electronic Street Sound. Since beginning his journey in 2020, MVNNOOO has crafted a raw, boundary-pushing style powered by street energy, heavy rhythms, and sharp storytelling.
+                </p>
+                <p style="font-size: 1.3rem; font-weight: 700; color: var(--primary);">"Sound from the streets, vibes for the world."</p>
+                <p style="margin-top: 1rem; color: var(--secondary);">@mvnnooo ✓</p>
+            </div>
+
+            <div class="hero-platforms">
+                <a href="https://www.soundon.global/bio/mvnnooo" target="_blank" class="hero-platform-icon" title="All Platforms">🎵</a>
+            </div>
+
+            <div class="genre-tags">
+                <span class="tag">Egyptian Trap</span>
+                <span class="tag">Drill</span>
+                <span class="tag">Electronic Street Sound</span>
+            </div>
+            <div class="cta-buttons">
+                <a href="#music" class="btn btn-primary">استمع الآن</a>
+                <a href="#contact" class="btn btn-secondary">تواصل معي</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">عن الفنان</h2>
+        <div class="bio-content">
+            <div class="bio-text">
+                <h3>البداية</h3>
+                <p>وُلد MVNNOOO في العجمي، الإسكندرية عام 1992. نشأ في شوارع الإسكندرية النابضة بالحياة، حيث تعرض للطاقة الخام للحياة الحضرية، والتي أصبحت فيما بعد تأثيراً رئيسياً على موسيقاه.</p>
+
+                <h3>المسيرة الموسيقية</h3>
+                <p>بدأ MVNNOOO رحلته الموسيقية في عام 2020، مصنعاً أسلوباً مميزاً يدمج التراب المصري والدريل والأصوات الإلكترونية للشارع. تتميز موسيقاه بالإيقاعات الثقيلة، والسرد الواقعي، والطاقة المستوحاة من الشارع.</p>
+
+                <h3>الرؤية الفنية</h3>
+                <p>يحافظ MVNNOOO على ارتباط قوي بالإسكندرية، وغالباً ما يعكس ثقافة المدينة وحياة الشارع في كلماته. تركز رؤيته الفنية على الأصالة والطموح وترجمة تجارب الحياة الحضرية الحقيقية إلى موسيقاه.</p>
+            </div>
+
+            <div class="bio-text">
+                <h3>الأسلوب الموسيقي</h3>
+                <p><strong>Egyptian Trap</strong> مع جودة إنتاج عالمية</p>
+                <p><strong>Drill</strong> ممزوج بسرديات الشارع</p>
+                <p><strong>Electronic Street Sound</strong> يلتقط مشهد الإسكندرية الأندرجراوند</p>
+                <p><strong>Dark Minimal</strong> جماليات بإنتاج ثقيل وجوي</p>
+                <p><strong>Sharp Storytelling</strong> متجذر في تجارب أصيلة</p>
+
+                <h3>التعاونات</h3>
+                <p>تعاون MVNNOOO مع فنانين آخرين بما في ذلك <strong>HARLY</strong>، ويواصل دفع حدود المشهد الموسيقي الحضري المصري.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="stats">
+        <h2 class="section-title">الإحصائيات والإنجازات</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">20+</div>
+                <div class="stat-label">أغنية منشورة</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2020</div>
+                <div class="stat-label">بداية الرحلة</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">9+</div>
+                <div class="stat-label">منصة موسيقية</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">طاقة الشارع</div>
+            </div>
+        </div>
+
+        <div style="margin-top: 4rem;">
+            <h3 style="text-align: center; color: var(--primary); margin-bottom: 2rem; font-size: 2rem;">التوزيع والشراكات</h3>
+            <div style="text-align: center; color: #ccc;">
+                <p><strong>موزعة عبر:</strong> Sound On Global & RouteNote</p>
+                <p><strong>متوفر على:</strong> Spotify, Apple Music, Anghami, Deezer, Tidal, Amazon Music, YouTube Music</p>
+                <p><strong>الوصول الشهري:</strong> حضور متنامٍ عبر منطقة الشرق الأوسط وشمال أفريقيا</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="music">
+        <h2 class="section-title">استمع للموسيقى</h2>
+        <div class="music-platforms">
+            <a href="https://open.spotify.com/intl-ar/artist/5OpjwqoP6EVF7DiEgxbw6N" target="_blank" class="platform-btn">Spotify</a>
+            <a href="https://music.apple.com/eg/artist/mvnnooo/1856084660?l=ar" target="_blank" class="platform-btn">Apple Music</a>
+            <a href="https://play.anghami.com/artist/26394054" target="_blank" class="platform-btn">Anghami</a>
+            <a href="https://deezer.com/artist/358069852" target="_blank" class="platform-btn">Deezer</a>
+            <a href="https://tidal.com/artist/70289375" target="_blank" class="platform-btn">Tidal</a>
+            <a href="https://music.amazon.com/artists/B0G3QG2928" target="_blank" class="platform-btn">Amazon Music</a>
+            <a href="https://www.youtube.com/@MVNNOOO" target="_blank" class="platform-btn">YouTube</a>
+            <a href="https://linktr.ee/MVNNOOO" target="_blank" class="platform-btn">All Platforms</a>
+        </div>
+
+        <div style="margin-top: 4rem; text-align: center;">
+            <h3 style="color: var(--primary); margin-bottom: 2rem; font-size: 2rem;">أبرز الأعمال</h3>
+            <div class="genre-tags">
+                <span class="tag">يمكن</span>
+                <span class="tag">بداية</span>
+                <span class="tag">رفرش</span>
+            </div>
+            <p style="color: #ccc; margin-top: 2rem;">استمع لأكثر من 20 أغنية أصلية على جميع المنصات</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">تواصل معي</h2>
+        
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <p style="color: #ccc; font-size: 1.2rem; margin-bottom: 1rem;">للحجوزات، التعاونات، والاستفسارات الصحفية</p>
+            <a href="mailto:itsjrmano@gmail.com" style="color: var(--primary); font-size: 1.3rem; text-decoration: none; font-weight: 700;">itsjrmano@gmail.com</a>
+        </div>
+
+        <div class="social-links">
+            <a href="https://www.instagram.com/mvnnoooo/" target="_blank" class="social-icon" title="Instagram">📷</a>
+            <a href="https://www.facebook.com/mvnnoooo" target="_blank" class="social-icon" title="Facebook">📘</a>
+            <a href="https://x.com/OfficialManno_" target="_blank" class="social-icon" title="X (Twitter)">🐦</a>
+            <a href="https://www.youtube.com/@MVNNOOO" target="_blank" class="social-icon" title="YouTube">📹</a>
+            <a href="https://www.soundon.global/bio/mvnnooo" target="_blank" class="social-icon" title="SoundOn">🎵</a>
+        </div>
+
+        <div style="margin-top: 4rem; text-align: center; background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 15px; border: 1px solid rgba(255, 0, 80, 0.3);">
+            <h3 style="color: var(--primary); margin-bottom: 1rem;">مفتوح للتعاون</h3>
+            <p style="color: #ccc;">
+                ✓ حجوزات الحفلات والعروض<br>
+                ✓ طلبات التعاون مع المنتجين والفنانين<br>
+                ✓ المقابلات الصحفية والإعلامية<br>
+                ✓ فرص الترخيص والمزامنة<br>
+                ✓ الاستفسارات العامة
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 MVNNOOO. All Rights Reserved.</p>
+        <p style="margin-top: 1rem; color: var(--primary);">Sound from the streets, vibes for the world 🔥</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Alexandria, Egypt | Active Since 2020</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'all 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
