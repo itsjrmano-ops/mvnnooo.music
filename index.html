@@ -13,12 +13,14 @@
         }
 
         :root {
-            --primary: #ff0050;
-            --secondary: #00ffff;
-            --dark: #0a0a0a;
-            --darker: #050505;
-            --light: #ffffff;
-            --gray: #888;
+            --primary: #ff3366;    /* وردي أكثر نعومة واحترافية */
+            --secondary: #00ccff;  /* أزرق سماوي أقل صراحة */
+            --accent: #ffaa00;     /* لون ذهبي مميز */
+            --dark: #0a0a0f;       /* خلفية زرقاء داكنة */
+            --darker: #05050a;
+            --light: #f0f0f0;      /* أبيض دافئ */
+            --gray: #aaaaaa;
+            --dark-gray: #444444;
         }
 
         body {
@@ -36,9 +38,9 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: linear-gradient(45deg, #0a0a0a, #1a0a1a, #0a0a1a, #0a0a0a);
+            background: linear-gradient(45deg, var(--darker), #0a0a1a, #1a0a0a, var(--darker));
             background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
+            animation: gradientShift 20s ease infinite;
         }
 
         @keyframes gradientShift {
@@ -52,9 +54,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.03;
+            opacity: 0.02;
             z-index: -1;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
         header {
@@ -62,57 +64,63 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 0, 80, 0.2);
+            background: rgba(10, 10, 15, 0.92);
+            backdrop-filter: blur(12px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 51, 102, 0.25);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 5%;
+            padding: 1.2rem 5%;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .logo {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 900;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             letter-spacing: 2px;
+            text-shadow: 0 2px 10px rgba(255, 51, 102, 0.3);
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
         }
 
         .nav-links a {
             color: var(--light);
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            padding: 0.5rem 0;
         }
 
         .nav-links a:hover {
             color: var(--primary);
+            transform: translateY(-2px);
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 2px;
         }
 
         .nav-links a:hover::after {
@@ -139,14 +147,14 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            filter: brightness(0.3) contrast(1.2) saturate(1.2);
+            filter: brightness(0.35) contrast(1.1) saturate(1.1);
             z-index: 0;
-            animation: zoomEffect 30s infinite alternate;
+            animation: zoomEffect 40s infinite alternate ease-in-out;
         }
 
         @keyframes zoomEffect {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.15) rotate(0.5deg); }
         }
 
         .hero-overlay {
@@ -155,343 +163,556 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(
-                45deg,
-                rgba(10, 10, 10, 0.9) 0%,
-                rgba(255, 0, 80, 0.1) 50%,
-                rgba(10, 10, 10, 0.9) 100%
-            );
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(255, 51, 102, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(0, 204, 255, 0.1) 0%, transparent 50%),
+                linear-gradient(45deg, rgba(10, 10, 15, 0.85) 0%, rgba(10, 10, 15, 0.7) 100%);
             z-index: 1;
         }
 
         .hero-content {
             z-index: 2;
-            padding: 2rem;
-            animation: fadeInUp 1s ease;
+            padding: 3rem;
+            animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            max-width: 900px;
         }
 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(40px) scale(0.95);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
             }
         }
 
         .hero h1 {
-            font-size: 5rem;
+            font-size: 5.5rem;
             font-weight: 900;
-            margin-bottom: 2rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            margin-bottom: 2.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 0 30px rgba(255, 0, 80, 0.5);
-            letter-spacing: 3px;
+            text-shadow: 0 5px 25px rgba(255, 51, 102, 0.4);
+            letter-spacing: 4px;
+            line-height: 1.1;
         }
 
         .hero-platforms {
             display: flex;
-            gap: 1rem;
+            gap: 1.2rem;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
 
         .hero-platform-icon {
-            width: 45px;
-            height: 45px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 0, 80, 0.4);
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(255, 51, 102, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
             color: var(--light);
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             cursor: pointer;
+            backdrop-filter: blur(10px);
         }
 
         .hero-platform-icon:hover {
             background: var(--primary);
             border-color: var(--primary);
-            transform: scale(1.15) translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 0, 80, 0.5);
+            transform: scale(1.2) translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 51, 102, 0.5);
+            color: white;
         }
 
         .hero .tagline {
-            font-size: 1.5rem;
-            color: var(--gray);
-            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            color: rgba(240, 240, 240, 0.85);
+            margin-bottom: 3rem;
             font-weight: 300;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
         .cta-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
+            margin-top: 2rem;
         }
 
         .btn {
-            padding: 1rem 2.5rem;
+            padding: 1.2rem 3rem;
             border: none;
             border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 700;
+            font-size: 1.1rem;
+            font-weight: 800;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), #ff3366);
+            background: linear-gradient(135deg, var(--primary), #ff5588);
             color: var(--light);
-            box-shadow: 0 5px 20px rgba(255, 0, 80, 0.4);
+            box-shadow: 0 8px 25px rgba(255, 51, 102, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.1);
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(255, 0, 80, 0.6);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 51, 102, 0.6);
+            background: linear-gradient(135deg, #ff4477, #ff6699);
         }
 
         .btn-secondary {
             background: transparent;
             color: var(--light);
             border: 2px solid var(--secondary);
+            backdrop-filter: blur(10px);
         }
 
         .btn-secondary:hover {
             background: var(--secondary);
             color: var(--dark);
-            transform: translateY(-3px);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 204, 255, 0.4);
         }
 
         section {
-            padding: 5rem 5%;
+            padding: 6rem 5%;
             max-width: 1400px;
             margin: 0 auto;
+            position: relative;
         }
 
         .section-title {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 900;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             text-align: center;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 25%;
+            width: 50%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            border-radius: 2px;
         }
 
         .bio-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
             align-items: start;
         }
 
         .bio-image {
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
             border: 3px solid var(--primary);
-            animation: floatEffect 6s ease-in-out infinite;
+            animation: floatEffect 8s ease-in-out infinite;
+            position: relative;
         }
 
         @keyframes floatEffect {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(0.5deg); }
+        }
+
+        .bio-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 51, 102, 0.1), rgba(0, 204, 255, 0.1));
+            z-index: 1;
+            pointer-events: none;
         }
 
         .bio-image img {
             width: 100%;
-            height: 500px;
+            height: 550px;
             object-fit: cover;
-            transition: transform 0.5s;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: contrast(1.05) brightness(1.05);
         }
 
         .bio-image:hover img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         .bio-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #ccc;
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: rgba(204, 204, 204, 0.95);
         }
 
         .bio-text h3 {
             color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            font-size: 2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .bio-text h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+            border-radius: 2px;
         }
 
         .bio-text p {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: justify;
+        }
+
+        .bio-text strong {
+            color: var(--accent);
+            font-weight: 700;
         }
 
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 2.5rem;
+            margin-top: 4rem;
         }
 
         .stat-card {
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 0, 80, 0.3);
-            border-radius: 15px;
-            padding: 2rem;
+            border: 1px solid rgba(255, 51, 102, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
             text-align: center;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .stat-card:hover::before {
+            transform: scaleX(1);
         }
 
         .stat-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.03);
             border-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(255, 0, 80, 0.3);
+            box-shadow: 0 20px 40px rgba(255, 51, 102, 0.25);
+            background: rgba(255, 255, 255, 0.08);
         }
 
         .stat-number {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 900;
             color: var(--primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            text-shadow: 0 5px 15px rgba(255, 51, 102, 0.3);
         }
 
         .stat-label {
             color: var(--gray);
-            font-size: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
         }
 
         .music-platforms {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
         .platform-btn {
             background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 0, 80, 0.3);
-            padding: 1.5rem;
-            border-radius: 15px;
+            border: 2px solid rgba(255, 51, 102, 0.25);
+            padding: 1.8rem 1.5rem;
+            border-radius: 18px;
             text-align: center;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             text-decoration: none;
             color: var(--light);
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .platform-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .platform-btn:hover::before {
+            left: 100%;
         }
 
         .platform-btn:hover {
             background: var(--primary);
             border-color: var(--primary);
-            transform: scale(1.05);
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(255, 51, 102, 0.4);
+            color: white;
         }
 
         .social-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 2rem;
             justify-content: center;
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
 
         .social-icon {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 0, 80, 0.3);
+            background: rgba(255, 255, 255, 0.07);
+            border: 2px solid rgba(255, 51, 102, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
             color: var(--light);
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            border-radius: 50%;
+        }
+
+        .social-icon:hover::before {
+            opacity: 1;
+        }
+
+        .social-icon i {
+            position: relative;
+            z-index: 1;
         }
 
         .social-icon:hover {
-            background: var(--primary);
-            border-color: var(--primary);
-            transform: rotate(360deg);
+            border-color: transparent;
+            transform: rotate(360deg) scale(1.1);
+            box-shadow: 0 10px 25px rgba(255, 51, 102, 0.4);
+            color: white;
         }
 
         .genre-tags {
             display: flex;
-            gap: 1rem;
+            gap: 1.2rem;
             flex-wrap: wrap;
             justify-content: center;
-            margin: 2rem 0;
+            margin: 2.5rem 0;
         }
 
         .tag {
-            background: rgba(255, 0, 80, 0.2);
-            border: 1px solid var(--primary);
-            padding: 0.5rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 0.9rem;
+            background: rgba(255, 51, 102, 0.15);
+            border: 2px solid var(--primary);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--light);
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .tag:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 51, 102, 0.3);
         }
 
         .contact-form {
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
             background: rgba(255, 255, 255, 0.05);
-            padding: 3rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 0, 80, 0.3);
+            padding: 4rem;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 51, 102, 0.25);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             color: var(--gray);
+            font-weight: 600;
+            font-size: 1.1rem;
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 0, 80, 0.3);
-            border-radius: 10px;
+            padding: 1.2rem 1.5rem;
+            background: rgba(255, 255, 255, 0.07);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
             color: var(--light);
             font-family: inherit;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.2);
         }
 
         .form-group textarea {
             resize: vertical;
-            min-height: 150px;
+            min-height: 180px;
         }
 
         footer {
-            background: var(--darker);
-            border-top: 1px solid rgba(255, 0, 80, 0.2);
-            padding: 2rem 5%;
+            background: rgba(5, 5, 10, 0.95);
+            border-top: 1px solid rgba(255, 51, 102, 0.2);
+            padding: 3rem 5%;
             text-align: center;
             color: var(--gray);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        footer p:first-child {
+            font-size: 1.2rem;
+            color: var(--light);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        footer p:nth-child(2) {
+            color: var(--primary);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        footer p:last-child {
+            font-size: 1rem;
+            color: var(--dark-gray);
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 4.5rem;
+            }
+            
+            .section-title {
+                font-size: 3rem;
+            }
+            
+            .bio-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
         }
 
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 3rem;
+                font-size: 3.5rem;
             }
 
-            .bio-content {
-                grid-template-columns: 1fr;
+            .hero .tagline {
+                font-size: 1.5rem;
             }
 
             .nav-links {
@@ -499,49 +720,106 @@
             }
 
             .section-title {
-                font-size: 2rem;
+                font-size: 2.5rem;
+            }
+
+            .bio-image img {
+                height: 400px;
+            }
+
+            .bio-content {
+                gap: 2.5rem;
+            }
+
+            .contact-form {
+                padding: 3rem 2rem;
+            }
+
+            .btn {
+                padding: 1rem 2.5rem;
+                font-size: 1rem;
+            }
+
+            .music-platforms {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.3rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
             }
 
             .bio-image img {
                 height: 300px;
             }
+
+            .music-platforms {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                gap: 1.5rem;
+            }
+
+            .social-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
         }
 
         .glitch {
             position: relative;
-            animation: glitch 3s infinite;
+            animation: glitch 5s infinite;
         }
 
         @keyframes glitch {
-            0%, 90%, 100% {
+            0%, 93%, 95%, 97%, 100% {
                 text-shadow: none;
-            }
-            92% {
-                text-shadow: 3px 0 var(--primary), -3px 0 var(--secondary);
+                transform: translate(0);
             }
             94% {
-                text-shadow: -3px 0 var(--primary), 3px 0 var(--secondary);
+                text-shadow: 4px 0 var(--primary), -4px 0 var(--secondary);
+                transform: translate(-2px, 1px);
+            }
+            96% {
+                text-shadow: -3px 0 var(--accent), 3px 0 var(--primary);
+                transform: translate(1px, -1px);
+            }
+            98% {
+                text-shadow: 2px 0 var(--secondary), -2px 0 var(--accent);
+                transform: translate(-1px, 2px);
             }
         }
 
-        /* إضافة تأثيرات جديدة للصور */
         .artist-showcase {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
         }
 
         .showcase-item {
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
             position: relative;
-            height: 300px;
-            transition: transform 0.3s;
+            height: 350px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
         }
 
         .showcase-item:hover {
-            transform: scale(1.03);
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 25px 50px rgba(255, 51, 102, 0.3);
         }
 
         .showcase-item img {
@@ -549,11 +827,12 @@
             height: 100%;
             object-fit: cover;
             filter: grayscale(0.3) contrast(1.1);
-            transition: filter 0.3s;
+            transition: all 0.6s ease;
         }
 
         .showcase-item:hover img {
-            filter: grayscale(0) contrast(1.2);
+            filter: grayscale(0) contrast(1.2) brightness(1.1);
+            transform: scale(1.08);
         }
 
         .showcase-overlay {
@@ -561,11 +840,75 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            padding: 1rem;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            padding: 2rem;
             color: white;
+            transform: translateY(10px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .showcase-item:hover .showcase-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .showcase-overlay h4 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        /* تأثيرات إضافية للاحترافية */
+        .pulse {
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .gradient-border {
+            position: relative;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            border-radius: 15px;
+        }
+
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary), var(--accent), var(--secondary));
+            border-radius: 17px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gradient-border:hover::before {
+            opacity: 1;
+        }
+
+        /* تأثيرات النص */
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-shadow {
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
     </style>
+    <!-- رابط أيقونات Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="bg-animated"></div>
@@ -591,7 +934,18 @@
             <h1 class="glitch">MVNNOOO</h1>
             
             <div class="hero-platforms">
-                <a href="https://www.soundon.global/bio/mvnnooo" target="_blank" class="hero-platform-icon" title="All Platforms">🎵</a>
+                <a href="https://www.soundon.global/bio/mvnnooo" target="_blank" class="hero-platform-icon" title="All Platforms">
+                    <i class="fas fa-music"></i>
+                </a>
+                <a href="https://open.spotify.com/intl-ar/artist/5OpjwqoP6EVF7DiEgxbw6N" target="_blank" class="hero-platform-icon" title="Spotify">
+                    <i class="fab fa-spotify"></i>
+                </a>
+                <a href="https://www.youtube.com/@MVNNOOO" target="_blank" class="hero-platform-icon" title="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://www.instagram.com/mvnnoooo/" target="_blank" class="hero-platform-icon" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
             </div>
 
             <p class="tagline">Sound from the streets, vibes for the world</p>
@@ -599,10 +953,15 @@
                 <span class="tag">Egyptian Trap</span>
                 <span class="tag">Drill</span>
                 <span class="tag">Electronic Street Sound</span>
+                <span class="tag">Dark Minimal</span>
             </div>
             <div class="cta-buttons">
-                <a href="#music" class="btn btn-primary">استمع الآن</a>
-                <a href="#contact" class="btn btn-secondary">تواصل معي</a>
+                <a href="#music" class="btn btn-primary">
+                    <i class="fas fa-play-circle"></i> استمع الآن
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i> تواصل معي
+                </a>
             </div>
         </div>
     </section>
@@ -642,24 +1001,26 @@
                 <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="استوديو التسجيل">
                 <div class="showcase-overlay">
                     <h4>استوديو التسجيل</h4>
+                    <p>الجو الإبداعي حيث تُخلق الموسيقى</p>
                 </div>
             </div>
             <div class="showcase-item">
                 <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="العروض الحية">
                 <div class="showcase-overlay">
                     <h4>العروض الحية</h4>
+                    <p>طاقة الشارع تلتقي بالجمهور</p>
                 </div>
             </div>
             <div class="showcase-item">
                 <img src="https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="عملية الإنتاج">
                 <div class="showcase-overlay">
                     <h4>عملية الإنتاج</h4>
+                    <p>تحويل الأفكار إلى أعمال فنية</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- باقي الأقسام تبقى كما هي بدون تغيير -->
     <section id="stats">
         <h2 class="section-title">الإحصائيات والإنجازات</h2>
         <div class="stats-grid">
@@ -694,14 +1055,30 @@
     <section id="music">
         <h2 class="section-title">استمع للموسيقى</h2>
         <div class="music-platforms">
-            <a href="https://open.spotify.com/intl-ar/artist/5OpjwqoP6EVF7DiEgxbw6N" target="_blank" class="platform-btn">Spotify</a>
-            <a href="https://music.apple.com/eg/artist/mvnnooo/1856084660?l=ar" target="_blank" class="platform-btn">Apple Music</a>
-            <a href="https://play.anghami.com/artist/26394054" target="_blank" class="platform-btn">Anghami</a>
-            <a href="https://deezer.com/artist/358069852" target="_blank" class="platform-btn">Deezer</a>
-            <a href="https://tidal.com/artist/70289375" target="_blank" class="platform-btn">Tidal</a>
-            <a href="https://music.amazon.com/artists/B0G3QG2928" target="_blank" class="platform-btn">Amazon Music</a>
-            <a href="https://www.youtube.com/@MVNNOOO" target="_blank" class="platform-btn">YouTube</a>
-            <a href="https://linktr.ee/MVNNOOO" target="_blank" class="platform-btn">All Platforms</a>
+            <a href="https://open.spotify.com/intl-ar/artist/5OpjwqoP6EVF7DiEgxbw6N" target="_blank" class="platform-btn">
+                <i class="fab fa-spotify"></i> Spotify
+            </a>
+            <a href="https://music.apple.com/eg/artist/mvnnooo/1856084660?l=ar" target="_blank" class="platform-btn">
+                <i class="fab fa-apple"></i> Apple Music
+            </a>
+            <a href="https://play.anghami.com/artist/26394054" target="_blank" class="platform-btn">
+                <i class="fas fa-music"></i> Anghami
+            </a>
+            <a href="https://deezer.com/artist/358069852" target="_blank" class="platform-btn">
+                <i class="fab fa-deezer"></i> Deezer
+            </a>
+            <a href="https://tidal.com/artist/70289375" target="_blank" class="platform-btn">
+                <i class="fas fa-water"></i> Tidal
+            </a>
+            <a href="https://music.amazon.com/artists/B0G3QG2928" target="_blank" class="platform-btn">
+                <i class="fab fa-amazon"></i> Amazon Music
+            </a>
+            <a href="https://www.youtube.com/@MVNNOOO" target="_blank" class="platform-btn">
+                <i class="fab fa-youtube"></i> YouTube
+            </a>
+            <a href="https://linktr.ee/MVNNOOO" target="_blank" class="platform-btn">
+                <i class="fas fa-link"></i> All Platforms
+            </a>
         </div>
 
         <div style="margin-top: 4rem; text-align: center;">
@@ -710,8 +1087,10 @@
                 <span class="tag">يمكن</span>
                 <span class="tag">بداية</span>
                 <span class="tag">رفرش</span>
+                <span class="tag">شارع</span>
+                <span class="tag">حقيقة</span>
             </div>
-            <p style="color: #ccc; margin-top: 2rem;">استمع لأكثر من 20 أغنية أصلية على جميع المنصات</p>
+            <p style="color: #ccc; margin-top: 2rem; font-size: 1.2rem;">استمع لأكثر من 20 أغنية أصلية على جميع المنصات</p>
         </div>
     </section>
 
@@ -720,33 +1099,50 @@
         
         <div style="text-align: center; margin-bottom: 3rem;">
             <p style="color: #ccc; font-size: 1.2rem; margin-bottom: 1rem;">للحجوزات، التعاونات، والاستفسارات الصحفية</p>
-            <a href="mailto:itsjrmano@gmail.com" style="color: var(--primary); font-size: 1.3rem; text-decoration: none; font-weight: 700;">itsjrmano@gmail.com</a>
+            <a href="mailto:itsjrmano@gmail.com" style="color: var(--primary); font-size: 1.5rem; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 0.5rem;">
+                <i class="fas fa-envelope"></i> itsjrmano@gmail.com
+            </a>
         </div>
 
         <div class="social-links">
-            <a href="https://www.instagram.com/mvnnoooo/" target="_blank" class="social-icon" title="Instagram">📷</a>
-            <a href="https://www.facebook.com/mvnnoooo" target="_blank" class="social-icon" title="Facebook">📘</a>
-            <a href="https://x.com/OfficialManno_" target="_blank" class="social-icon" title="X (Twitter)">🐦</a>
-            <a href="https://www.youtube.com/@MVNNOOO" target="_blank" class="social-icon" title="YouTube">📹</a>
-            <a href="https://www.soundon.global/bio/mvnnooo" target="_blank" class="social-icon" title="SoundOn">🎵</a>
+            <a href="https://www.instagram.com/mvnnoooo/" target="_blank" class="social-icon" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/mvnnoooo" target="_blank" class="social-icon" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://x.com/OfficialManno_" target="_blank" class="social-icon" title="X (Twitter)">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.youtube.com/@MVNNOOO" target="_blank" class="social-icon" title="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.soundon.global/bio/mvnnooo" target="_blank" class="social-icon" title="SoundOn">
+                <i class="fas fa-music"></i>
+            </a>
         </div>
 
-        <div style="margin-top: 4rem; text-align: center; background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 15px; border: 1px solid rgba(255, 0, 80, 0.3);">
-            <h3 style="color: var(--primary); margin-bottom: 1rem;">مفتوح للتعاون</h3>
-            <p style="color: #ccc;">
-                ✓ حجوزات الحفلات والعروض<br>
-                ✓ طلبات التعاون مع المنتجين والفنانين<br>
-                ✓ المقابلات الصحفية والإعلامية<br>
-                ✓ فرص الترخيص والمزامنة<br>
-                ✓ الاستفسارات العامة
-            </p>
+        <div style="margin-top: 4rem; text-align: center; background: rgba(255, 255, 255, 0.05); padding: 3rem; border-radius: 20px; border: 1px solid rgba(255, 51, 102, 0.3); backdrop-filter: blur(10px);">
+            <h3 style="color: var(--primary); margin-bottom: 1.5rem; font-size: 2rem;">مفتوح للتعاون</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; color: #ccc;">
+                <div><i class="fas fa-check" style="color: var(--accent);"></i> حجوزات الحفلات والعروض</div>
+                <div><i class="fas fa-check" style="color: var(--accent);"></i> طلبات التعاون مع المنتجين والفنانين</div>
+                <div><i class="fas fa-check" style="color: var(--accent);"></i> المقابلات الصحفية والإعلامية</div>
+                <div><i class="fas fa-check" style="color: var(--accent);"></i> فرص الترخيص والمزامنة</div>
+                <div><i class="fas fa-check" style="color: var(--accent);"></i> الاستفسارات العامة</div>
+            </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 MVNNOOO. All Rights Reserved.</p>
+        <p>&copy; <span id="currentYear">2025</span> MVNNOOO. All Rights Reserved.</p>
         <p style="margin-top: 1rem; color: var(--primary);">Sound from the streets, vibes for the world 🔥</p>
         <p style="margin-top: 0.5rem; font-size: 0.9rem;">Alexandria, Egypt | Active Since 2020</p>
+        <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 1rem; font-size: 0.9rem; color: var(--dark-gray);">
+            <span>Designed with passion</span>
+            <span>•</span>
+            <span>Built for the culture</span>
+        </div>
     </footer>
 
     <script>
@@ -801,6 +1197,14 @@
             img.style.transform = 'scale(0.9)';
             img.style.transition = 'all 0.8s ease';
             imageObserver.observe(img);
+        });
+
+        // تحديث السنة تلقائيًا في الفوتر
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentYearElement = document.getElementById('currentYear');
+            if (currentYearElement) {
+                currentYearElement.textContent = new Date().getFullYear();
+            }
         });
     </script>
 </body>
