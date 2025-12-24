@@ -464,11 +464,6 @@
             transform: translateY(-5px);
         }
 
-        .track-card:hover .play-overlay {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         .track-number {
             color: var(--spotify-gray);
             font-size: 1rem;
@@ -503,34 +498,6 @@
             text-align: right;
         }
 
-        .play-overlay {
-            position: absolute;
-            top: 50%;
-            right: 1.2rem;
-            transform: translateY(-50%);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        .play-overlay-btn {
-            background: var(--spotify-green);
-            color: black;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .play-overlay-btn:hover {
-            background: var(--spotify-hover);
-            transform: scale(1.1);
-        }
-
         .popular-tracks {
             display: grid;
             gap: 0.5rem;
@@ -550,14 +517,14 @@
             background: rgba(255, 255, 255, 0.07);
         }
 
-        .popular-track:hover .track-play {
-            opacity: 1;
-        }
-
         .track-play {
             opacity: 0;
             transition: opacity 0.3s ease;
             color: var(--spotify-green);
+        }
+
+        .popular-track:hover .track-play {
+            opacity: 1;
         }
 
         .albums-grid {
@@ -681,7 +648,6 @@
             font-size: 0.9rem;
         }
 
-        /* About Section Styles - New */
         .about-section {
             background: var(--spotify-card);
             border-radius: 15px;
@@ -872,18 +838,6 @@
             }
         }
 
-        .player-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #181818;
-            border-top: 1px solid #282828;
-            padding: 0.8rem 1rem;
-            z-index: 1000;
-            display: none;
-        }
-
         ::-webkit-scrollbar {
             width: 12px;
         }
@@ -936,12 +890,10 @@
                 <div class="artist-info">
                     <div class="artist-type">فنان</div>
                     <div class="artist-name-container">
-                        <!-- تم إرجاع اسم الفنان كما كان سابقًا -->
                         <h1 class="artist-name">MVNNOOO</h1>
                         <span class="official-badge">رسمي موثق</span>
                     </div>
                     <div class="artist-stats">
-                        <!-- تم حذف "١٠٠٠٠+ مستمع شهريًا" -->
                         <div class="stat-item">
                             <i class="fas fa-music"></i>
                             <span>٢٠+ أغنية</span>
@@ -956,16 +908,13 @@
                         </div>
                     </div>
                     <div class="hero-actions">
-                        <button class="play-button">
+                        <button class="play-button" onclick="window.open('https://open.spotify.com/intl-ar/artist/5OpjwqoP6EVF7DiEgxbw6N', '_blank')">
                             <i class="fas fa-play"></i>
                         </button>
-                        <button class="follow-button">متابعة</button>
+                        <button class="follow-button" onclick="window.open('https://open.spotify.com/intl-ar/artist/5OpjwqoP6EVF7DiEgxbw6N', '_blank')">متابعة على Spotify</button>
                         <div class="action-buttons">
-                            <button class="action-button" title="المفضلة">
-                                <i class="far fa-heart"></i>
-                            </button>
-                            <button class="action-button" title="المزيد">
-                                <i class="fas fa-ellipsis-h"></i>
+                            <button class="action-button" title="رابط شامل" onclick="window.open('https://linktr.ee/MVNNOOO', '_blank')">
+                                <i class="fas fa-link"></i>
                             </button>
                         </div>
                     </div>
@@ -987,7 +936,7 @@
             <a href="#music" class="see-all">عرض الكل</a>
         </div>
         <div class="popular-tracks">
-            <div class="popular-track">
+            <div class="popular-track" onclick="window.open('https://open.spotify.com/intl-ar/artist/5OpjwqoP6EVF7DiEgxbw6N', '_blank')">
                 <div class="track-number">١</div>
                 <div class="track-info">
                     <div class="track-title">يمكن</div>
@@ -998,7 +947,7 @@
                     <i class="fas fa-play"></i>
                 </div>
             </div>
-            <div class="popular-track">
+            <div class="popular-track" onclick="window.open('https://open.spotify.com/intl-ar/artist/5OpjwqoP6EVF7DiEgxbw6N', '_blank')">
                 <div class="track-number">٢</div>
                 <div class="track-info">
                     <div class="track-title">بداية</div>
@@ -1009,7 +958,7 @@
                     <i class="fas fa-play"></i>
                 </div>
             </div>
-            <div class="popular-track">
+            <div class="popular-track" onclick="window.open('https://open.spotify.com/intl-ar/artist/5OpjwqoP6EVF7DiEgxbw6N', '_blank')">
                 <div class="track-number">٣</div>
                 <div class="track-info">
                     <div class="track-title">رفرش</div>
@@ -1029,21 +978,21 @@
             <a href="#music" class="see-all">عرض الكل</a>
         </div>
         <div class="albums-grid">
-            <div class="album-card">
+            <div class="album-card" onclick="window.open('https://open.spotify.com/intl-ar/artist/5OpjwqoP6EVF7DiEgxbw6N', '_blank')">
                 <div class="album-cover">
                     <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=400&fit=crop" alt="يمكن">
                 </div>
                 <div class="album-title">يمكن</div>
                 <div class="album-year">٢٠٢٣ • أغنية منفردة</div>
             </div>
-            <div class="album-card">
+            <div class="album-card" onclick="window.open('https://open.spotify.com/intl-ar/artist/5OpjwqoP6EVF7DiEgxbw6N', '_blank')">
                 <div class="album-cover">
                     <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=400&h=400&fit=crop" alt="بداية">
                 </div>
                 <div class="album-title">بداية</div>
                 <div class="album-year">٢٠٢٢ • أغنية منفردة</div>
             </div>
-            <div class="album-card">
+            <div class="album-card" onclick="window.open('https://open.spotify.com/intl-ar/artist/5OpjwqoP6EVF7DiEgxbw6N', '_blank')">
                 <div class="album-cover">
                     <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=400&h=400&fit=crop" alt="رفرش">
                 </div>
@@ -1053,7 +1002,6 @@
         </div>
     </section>
 
-    <!-- قسم About (عن الفنان) - تمت إضافته -->
     <section id="about">
         <div class="section-header">
             <h2 class="section-title">عن الفنان</h2>
@@ -1085,13 +1033,13 @@
             </div>
 
             <div class="artist-showcase">
-                <div class="showcase-item">
+                <div class="showcase-item" onclick="window.open('https://www.instagram.com/mvnnoooo/', '_blank')">
                     <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="استوديو التسجيل">
                 </div>
-                <div class="showcase-item">
+                <div class="showcase-item" onclick="window.open('https://www.youtube.com/@MVNNOOO', '_blank')">
                     <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="العروض الحية">
                 </div>
-                <div class="showcase-item">
+                <div class="showcase-item" onclick="window.open('https://www.soundon.global/bio/mvnnooo', '_blank')">
                     <img src="https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="عملية الإنتاج">
                 </div>
             </div>
@@ -1198,10 +1146,10 @@
             <div class="footer-section">
                 <h3>للتعاون</h3>
                 <ul class="footer-links">
-                    <li><a href="#contact">الحفلات والعروض</a></li>
-                    <li><a href="#contact">التعاونات الفنية</a></li>
-                    <li><a href="#contact">المقابلات الإعلامية</a></li>
-                    <li><a href="#contact">الترخيص والمزامنة</a></li>
+                    <li><a href="mailto:itsjrmano@gmail.com">الحفلات والعروض</a></li>
+                    <li><a href="mailto:itsjrmano@gmail.com">التعاونات الفنية</a></li>
+                    <li><a href="mailto:itsjrmano@gmail.com">المقابلات الإعلامية</a></li>
+                    <li><a href="mailto:itsjrmano@gmail.com">الترخيص والمزامنة</a></li>
                 </ul>
             </div>
         </div>
@@ -1217,8 +1165,10 @@
     </footer>
 
     <script>
+        // تحديث السنة تلقائيًا
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1232,47 +1182,7 @@
             });
         });
 
-        document.querySelectorAll('.play-button, .play-overlay-btn, .track-play').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                alert('جاري تشغيل الموسيقى... (هذا نموذج توضيحي)');
-            });
-        });
-
-        document.querySelector('.follow-button').addEventListener('click', function() {
-            this.textContent = this.textContent === 'متابعة' ? 'متابَع' : 'متابعة';
-            this.style.background = this.textContent === 'متابَع' ? 'var(--spotify-gray)' : 'transparent';
-            this.style.color = this.textContent === 'متابَع' ? 'black' : 'var(--spotify-light)';
-        });
-
-        document.querySelector('.action-button[title="المفضلة"]').addEventListener('click', function() {
-            const icon = this.querySelector('i');
-            icon.classList.toggle('far');
-            icon.classList.toggle('fas');
-            icon.style.color = icon.classList.contains('fas') ? 'var(--spotify-green)' : '';
-        });
-
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.album-card, .stat-box, .platform-card, .showcase-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'all 0.6s ease';
-            observer.observe(el);
-        });
-
+        // تفعيل التنقل النشط
         const navLinks = document.querySelectorAll('.nav-links a');
         const sections = document.querySelectorAll('section[id]');
 
@@ -1294,6 +1204,7 @@
             });
         });
 
+        // تحميل الصفحة
         window.addEventListener('load', () => {
             document.body.style.opacity = '1';
         });
