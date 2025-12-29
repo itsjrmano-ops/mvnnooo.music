@@ -24,6 +24,11 @@
             --spotify-sidebar: #000000;
             --apple-pink: #FA2C76;
             --youtube-red: #FF0000;
+            --lastfm-red: #D51007;
+            --genius-yellow: #FFFF64;
+            --tidal-teal: #000000;
+            --boomplay-blue: #00AEF0;
+            --amazon-orange: #FF9900;
         }
 
         body {
@@ -397,6 +402,7 @@
             gap: 0.5rem;
             margin: 0 0.5rem;
             flex-wrap: wrap;
+            max-width: 100%;
         }
 
         .platform-btn {
@@ -559,6 +565,72 @@
             border-color: rgba(255, 255, 255, 0.3);
         }
 
+        /* زر Last.fm الجديد */
+        .platform-btn.lastfm {
+            background: #D51007;
+            color: white;
+        }
+
+        .platform-btn.lastfm:hover {
+            background: #FF1A1A;
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(213, 16, 7, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* زر Genius الجديد */
+        .platform-btn.genius {
+            background: #000000;
+            color: #FFFF64;
+        }
+
+        .platform-btn.genius:hover {
+            background: #333333;
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(255, 255, 100, 0.3);
+            border-color: rgba(255, 255, 100, 0.3);
+        }
+
+        /* زر Amazon Music الجديد */
+        .platform-btn.amazon {
+            background: #FF9900;
+            color: white;
+        }
+
+        .platform-btn.amazon:hover {
+            background: #FFB340;
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(255, 153, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* زر Tidal الجديد */
+        .platform-btn.tidal {
+            background: #000000;
+            color: white;
+            position: relative;
+        }
+
+        .platform-btn.tidal:hover {
+            background: #222222;
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* زر Boomplay الجديد */
+        .platform-btn.boomplay {
+            background: #00AEF0;
+            color: white;
+        }
+
+        .platform-btn.boomplay:hover {
+            background: #33C1F3;
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 174, 240, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
         .follow-button {
             background: transparent;
             color: var(--spotify-light);
@@ -662,6 +734,80 @@
             color: var(--spotify-light);
             text-decoration: underline;
         }
+
+        /* قسم المنصات الموسيقية */
+        .platforms-section {
+            background: var(--spotify-card);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .platform-card {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--spotify-light);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        .platform-card:hover {
+            border-color: var(--spotify-green);
+            transform: translateY(-5px);
+            background: rgba(40, 40, 40, 0.8);
+        }
+
+        .platform-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .platform-name {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .platform-description {
+            color: var(--spotify-gray);
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        /* ألوان أيقونات المنصات */
+        .platform-icon.spotify { color: #1DB954; }
+        .platform-icon.apple { color: #FA2C76; }
+        .platform-icon.anghami { color: #D31027; }
+        .platform-icon.youtube { color: #FF0000; }
+        .platform-icon.tiktok { color: #000000; }
+        .platform-icon.deezer { color: #00C7F2; }
+        .platform-icon.facebook { color: #1877F2; }
+        .platform-icon.instagram { 
+            background: linear-gradient(135deg, #833AB4, #E1306C, #FCAF45);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .platform-icon.lastfm { color: #D51007; }
+        .platform-icon.genius { color: #FFFF64; }
+        .platform-icon.amazon { color: #FF9900; }
+        .platform-icon.tidal { color: #000000; }
+        .platform-icon.boomplay { color: #00AEF0; }
 
         .tracks-grid {
             display: grid;
@@ -835,41 +981,6 @@
             letter-spacing: 1px;
         }
 
-        .platforms-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .platform-card {
-            background: var(--spotify-card);
-            border-radius: 10px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: var(--spotify-light);
-            border: 1px solid transparent;
-        }
-
-        .platform-card:hover {
-            border-color: var(--spotify-green);
-            transform: translateY(-5px);
-            background: rgba(40, 40, 40, 0.8);
-        }
-
-        .platform-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--spotify-green);
-        }
-
-        .platform-name {
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
         .about-section {
             background: var(--spotify-card);
             border-radius: 15px;
@@ -921,6 +1032,7 @@
             position: relative;
             height: 200px;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .showcase-item:hover {
@@ -937,100 +1049,6 @@
 
         .showcase-item:hover img {
             filter: grayscale(0) contrast(1.2);
-        }
-
-        /* قسم التضمينات الموسيقية */
-        .embeds-section {
-            background: var(--spotify-card);
-            border-radius: 15px;
-            padding: 2rem;
-            margin-top: 3rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .embeds-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 1.5rem;
-        }
-
-        .embed-item {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .embed-item:hover {
-            border-color: rgba(29, 185, 84, 0.3);
-            transform: translateY(-3px);
-        }
-
-        .embed-header {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            margin-bottom: 1.2rem;
-            padding-bottom: 0.8rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .embed-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            color: white;
-        }
-
-        .embed-icon.spotify {
-            background: #1DB954;
-        }
-
-        .embed-icon.apple {
-            background: linear-gradient(135deg, #FA2C76, #FF6B9D);
-        }
-
-        .embed-icon.youtube {
-            background: #FF0000;
-        }
-
-        .embed-icon.anghami {
-            background: linear-gradient(135deg, #D31027, #EA384D);
-        }
-
-        .embed-icon.deezer {
-            background: linear-gradient(135deg, #00C7F2, #00A0D6);
-        }
-
-        .embed-icon.amazon {
-            background: linear-gradient(135deg, #FF9900, #FFAC33);
-        }
-
-        .embed-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--spotify-light);
-        }
-
-        .embed-wrapper {
-            width: 100%;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-top: 1rem;
-        }
-
-        .embed-description {
-            color: var(--spotify-gray);
-            font-size: 0.9rem;
-            margin-top: 1rem;
-            line-height: 1.5;
-            text-align: justify;
         }
 
         footer {
@@ -1097,6 +1115,9 @@
             .hero-content {
                 padding-left: 1.5rem;
             }
+            .platforms-grid {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            }
         }
 
         /* لأجهزة التابلت */
@@ -1113,6 +1134,9 @@
             }
             .nav-links {
                 gap: 1rem;
+            }
+            .platforms-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
         }
 
@@ -1133,6 +1157,16 @@
             }
             .artist-header {
                 gap: 1.5rem;
+            }
+            .platforms-grid {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            }
+            .platform-btn {
+                width: 38px;
+                height: 38px;
+            }
+            .platform-btn i {
+                font-size: 1rem;
             }
         }
 
@@ -1202,16 +1236,20 @@
             section {
                 padding: 2rem 1rem;
             }
-            .about-section {
+            .about-section, .platforms-section {
                 padding: 1.5rem;
                 margin-top: 2rem;
             }
-            .embeds-section {
-                padding: 1.5rem;
-                margin-top: 2rem;
+            .platforms-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 1rem;
             }
-            .embeds-container {
-                grid-template-columns: 1fr;
+            .platform-card {
+                padding: 1.2rem;
+            }
+            .platform-icon {
+                font-size: 2rem;
+                height: 50px;
             }
             .artist-info {
                 min-width: 100%;
@@ -1232,7 +1270,7 @@
             .platform-buttons {
                 gap: 0.4rem;
                 margin: 0.5rem 0;
-                justify-content: center;
+                justify-content: flex-start;
                 width: 100%;
             }
             
@@ -1246,8 +1284,8 @@
             }
             
             .hero-actions {
-                justify-content: center;
-                text-align: center;
+                justify-content: flex-start;
+                text-align: right;
             }
             
             /* تحسين لعنوان الفنان على الجوال */
@@ -1334,21 +1372,6 @@
             .artist-subtitle {
                 font-size: 0.8rem;
             }
-            
-            /* تحسينات للتضمينات على الجوال الصغير */
-            .embed-item {
-                padding: 1rem;
-            }
-            
-            .embed-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-            }
-            
-            .embed-title {
-                font-size: 1.1rem;
-            }
         }
 
         /* لأجهزة الموبايل الصغيرة جداً */
@@ -1370,6 +1393,15 @@
             
             .artist-subtitle {
                 font-size: 0.75rem;
+            }
+            
+            .platforms-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .platform-btn {
+                width: 34px;
+                height: 34px;
             }
         }
 
@@ -1410,10 +1442,9 @@
             
             <ul class="nav-links">
                 <li><a href="#home" class="active">الرئيسية</a></li>
-                <li><a href="#embeds">استمع مباشرة</a></li>
+                <li><a href="#platforms">المنصات</a></li>
                 <li><a href="#about">عن الفنان</a></li>
                 <li><a href="#stats">الإحصائيات</a></li>
-                <li><a href="#platforms">المنصات</a></li>
                 <li><a href="#albums">ألبومات</a></li>
                 <li><a href="#contact">تواصل</a></li>
             </ul>
@@ -1481,6 +1512,21 @@
                             <a href="https://www.instagram.com/mvnnoooo/" target="_blank" class="platform-btn instagram" title="Instagram">
                                 <i class="fab fa-instagram"></i>
                             </a>
+                            <a href="https://www.last.fm/music/MVNNOOO" target="_blank" class="platform-btn lastfm" title="Last.fm">
+                                <i class="fab fa-lastfm"></i>
+                            </a>
+                            <a href="https://genius.com/artists/Mvnnooo" target="_blank" class="platform-btn genius" title="Genius">
+                                <i class="fas fa-brain"></i>
+                            </a>
+                            <a href="https://music.amazon.com/artists/B0G3QG2928/mvnnooo?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_x6JSx5EZyvWdihUWBnYM6a5Mt" target="_blank" class="platform-btn amazon" title="Amazon Music">
+                                <i class="fab fa-amazon"></i>
+                            </a>
+                            <a href="https://tidal.com/artist/70289375" target="_blank" class="platform-btn tidal" title="Tidal">
+                                <i class="fas fa-wave-square"></i>
+                            </a>
+                            <a href="https://www.boomplay.com/artists/120665505?from=search" target="_blank" class="platform-btn boomplay" title="Boomplay">
+                                <i class="fas fa-play-circle"></i>
+                            </a>
                         </div>
                         
                         <button class="follow-button" onclick="window.open('https://open.spotify.com/intl-ar/artist/5OpjwqoP6EVF7DiEgxbw6N', '_blank')">متابعة على Spotify</button>
@@ -1503,111 +1549,130 @@
         </div>
     </section>
     
-    <!-- قسم التضمينات الموسيقية مباشرة بعد الهيرو -->
-    <section id="embeds">
+    <!-- قسم المنصات يأتي مباشرة بعد الهيرو -->
+    <section id="platforms">
         <div class="section-header">
-            <h2 class="section-title">استمع مباشرة من المنصات</h2>
+            <h2 class="section-title">استمع على جميع المنصات</h2>
         </div>
         
-        <div class="embeds-section">
-            <div class="embeds-container">
-                <!-- تضمين Spotify - قائمة التشغيل -->
-                <div class="embed-item">
-                    <div class="embed-header">
-                        <div class="embed-icon spotify">
-                            <i class="fab fa-spotify"></i>
-                        </div>
-                        <h3 class="embed-title">قائمة تشغيل Spotify الرسمية</h3>
+        <div class="platforms-section">
+            <div class="platforms-grid">
+                <!-- Spotify -->
+                <a href="https://open.spotify.com/intl-ar/artist/5OpjwqoP6EVF7DiEgxbw6N" target="_blank" class="platform-card">
+                    <div class="platform-icon spotify">
+                        <i class="fab fa-spotify"></i>
                     </div>
-                    <div class="embed-wrapper">
-                        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1EIXjLw5NL3JB1?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                    </div>
-                    <p class="embed-description">استمع إلى قائمة التشغيل الرسمية التي تضم أفضل أغاني MVNNOOO على Spotify. تتضمن هذه القائمة أحدث إصداراته وأكثرها شعبية.</p>
-                </div>
+                    <div class="platform-name">Spotify</div>
+                    <div class="platform-description">أشهر منصة موسيقية في العالم مع توصيات شخصية</div>
+                </a>
                 
-                <!-- تضمين Spotify - الفنان الرسمي -->
-                <div class="embed-item">
-                    <div class="embed-header">
-                        <div class="embed-icon spotify">
-                            <i class="fab fa-spotify"></i>
-                        </div>
-                        <h3 class="embed-title">صفحة الفنان الرسمية على Spotify</h3>
+                <!-- Apple Music -->
+                <a href="https://music.apple.com/eg/artist/mvnnooo/1856084660?l=ar" target="_blank" class="platform-card">
+                    <div class="platform-icon apple">
+                        <i class="fab fa-apple"></i>
                     </div>
-                    <div class="embed-wrapper">
-                        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/artist/5OpjwqoP6EVF7DiEgxbw6N?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                    </div>
-                    <p class="embed-description">صفحة الفنان الرسمية على Spotify. تابع MVNNOOO للحصول على أحدث إصداراته، واستمع إلى كامل أعماله الموسيقية، واحصل على توصيات شخصية.</p>
-                </div>
+                    <div class="platform-name">Apple Music</div>
+                    <div class="platform-description">جودة صوت عالية ومكتبة ضخمة</div>
+                </a>
                 
-                <!-- تضمين Apple Music -->
-                <div class="embed-item">
-                    <div class="embed-header">
-                        <div class="embed-icon apple">
-                            <i class="fab fa-apple"></i>
-                        </div>
-                        <h3 class="embed-title">Apple Music - أغنية "بداية"</h3>
+                <!-- Anghami -->
+                <a href="https://play.anghami.com/artist/26394054" target="_blank" class="platform-card">
+                    <div class="platform-icon anghami">
+                        <i class="fas fa-music"></i>
                     </div>
-                    <div class="embed-wrapper">
-                        <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/song/%D8%A8%D8%AF%D8%A7%D9%8A%D8%A9-feat-mohamed-saad-abd-elhameed-remastered-2025/1856093852"></iframe>
-                    </div>
-                    <p class="embed-description">استمع إلى أغنية "بداية" على Apple Music. تتميز Apple Music بأعلى جودة صوتية ومكتبة ضخمة من الموسيقى العالمية والعربية.</p>
-                </div>
+                    <div class="platform-name">Anghami</div>
+                    <div class="platform-description">المنصة الرائدة في الموسيقى العربية</div>
+                </a>
                 
-                <!-- تضمين YouTube -->
-                <div class="embed-item">
-                    <div class="embed-header">
-                        <div class="embed-icon youtube">
-                            <i class="fab fa-youtube"></i>
-                        </div>
-                        <h3 class="embed-title">YouTube - الفيديو الموسيقي</h3>
+                <!-- YouTube -->
+                <a href="https://www.youtube.com/@MVNNOOO" target="_blank" class="platform-card">
+                    <div class="platform-icon youtube">
+                        <i class="fab fa-youtube"></i>
                     </div>
-                    <div class="embed-wrapper">
-                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/MkJL3wVTBWg?si=gVRq8lr80qxKtL1m" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="border-radius: 8px;"></iframe>
-                    </div>
-                    <p class="embed-description">شاهد الفيديو الموسيقي الرسمي لـ MVNNOOO على YouTube. استمتع بتجربة بصرية وسمعية كاملة مع أحدث إصدارات الفنان.</p>
-                </div>
+                    <div class="platform-name">YouTube</div>
+                    <div class="platform-description">مقاطع الفيديو الموسيقية والعروض الحية</div>
+                </a>
                 
-                <!-- تضمين Anghami -->
-                <div class="embed-item">
-                    <div class="embed-header">
-                        <div class="embed-icon anghami">
-                            <i class="fas fa-music"></i>
-                        </div>
-                        <h3 class="embed-title">Anghami - الموسيقى العربية</h3>
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@mvnnooomusiceg" target="_blank" class="platform-card">
+                    <div class="platform-icon">
+                        <i class="fab fa-tiktok"></i>
                     </div>
-                    <div class="embed-wrapper">
-                        <iframe src="https://widget.anghami.com/artist/26394054/?theme=fulldark&layout=list&lang=en" scrolling="no" frameborder="0" width="100%" height="450" style="border-radius: 8px;"></iframe>
-                    </div>
-                    <p class="embed-description">استمع إلى MVNNOOO على منصة أنغامي الرائدة في الموسيقى العربية. اكتشف جميع أغانيه وقوائم التشغيل المميزة الخاصة به.</p>
-                </div>
+                    <div class="platform-name">TikTok</div>
+                    <div class="platform-description">مقاطع قصيرة وتحديات موسيقية</div>
+                </a>
                 
-                <!-- تضمين Deezer -->
-                <div class="embed-item">
-                    <div class="embed-header">
-                        <div class="embed-icon deezer">
-                            <i class="fab fa-deezer"></i>
-                        </div>
-                        <h3 class="embed-title">Deezer - الأغاني الأكثر شعبية</h3>
+                <!-- Deezer -->
+                <a href="https://deezer.com/artist/358069852" target="_blank" class="platform-card">
+                    <div class="platform-icon deezer">
+                        <i class="fab fa-deezer"></i>
                     </div>
-                    <div class="embed-wrapper">
-                        <iframe title="deezer-widget" src="https://widget.deezer.com/widget/dark/artist/358069852/top_tracks" width="100%" height="300" frameborder="0" allowtransparency="true" allow="encrypted-media; clipboard-write" style="border-radius: 8px;"></iframe>
-                    </div>
-                    <p class="embed-description">استمع إلى الأغاني الأكثر شعبية لـ MVNNOOO على Deezer. تشمل هذه القائمة أفضل أغانيه حسب عدد مرات الاستماع والإعجابات.</p>
-                </div>
+                    <div class="platform-name">Deezer</div>
+                    <div class="platform-description">توصيات موسيقية دقيقة وجودة صوت ممتازة</div>
+                </a>
                 
-                <!-- تضمين Amazon Music -->
-                <div class="embed-item">
-                    <div class="embed-header">
-                        <div class="embed-icon amazon">
-                            <i class="fab fa-amazon"></i>
-                        </div>
-                        <h3 class="embed-title">Amazon Music - البوم MVNNOOO</h3>
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/mvnnoooo" target="_blank" class="platform-card">
+                    <div class="platform-icon facebook">
+                        <i class="fab fa-facebook-f"></i>
                     </div>
-                    <div class="embed-wrapper">
-                        <iframe id='AmazonMusicEmbedB0G3QG2928' src='https://music.amazon.com/embed/B0G3QG2928/?id=UnhZbg1qFF&marketplaceId=ATVPDKIKX0DER&musicTerritory=US' width='100%' height='352px' frameBorder='0' style='border-radius:20px;max-width:100%'></iframe>
+                    <div class="platform-name">Facebook</div>
+                    <div class="platform-description">صفحة الفنان الرسمية وأحدث التحديثات</div>
+                </a>
+                
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/mvnnoooo/" target="_blank" class="platform-card">
+                    <div class="platform-icon instagram">
+                        <i class="fab fa-instagram"></i>
                     </div>
-                    <p class="embed-description">استمع إلى MVNNOOO على Amazon Music. استمتع بأعلى جودة صوتية واكتشف المزيد من الموسيقى المشابهة على المنصة.</p>
-                </div>
+                    <div class="platform-name">Instagram</div>
+                    <div class="platform-description">قصص يومية وخلف الكواليس</div>
+                </a>
+                
+                <!-- Last.fm -->
+                <a href="https://www.last.fm/music/MVNNOOO" target="_blank" class="platform-card">
+                    <div class="platform-icon lastfm">
+                        <i class="fab fa-lastfm"></i>
+                    </div>
+                    <div class="platform-name">Last.fm</div>
+                    <div class="platform-description">تتبع الاستماع والإحصائيات الموسيقية</div>
+                </a>
+                
+                <!-- Genius -->
+                <a href="https://genius.com/artists/Mvnnooo" target="_blank" class="platform-card">
+                    <div class="platform-icon genius">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="platform-name">Genius</div>
+                    <div class="platform-description">كلمات الأغاني وتفسير المعاني</div>
+                </a>
+                
+                <!-- Amazon Music -->
+                <a href="https://music.amazon.com/artists/B0G3QG2928/mvnnooo?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_x6JSx5EZyvWdihUWBnYM6a5Mt" target="_blank" class="platform-card">
+                    <div class="platform-icon amazon">
+                        <i class="fab fa-amazon"></i>
+                    </div>
+                    <div class="platform-name">Amazon Music</div>
+                    <div class="platform-description">موسيقى بدون إعلانات مع أمازون</div>
+                </a>
+                
+                <!-- Tidal -->
+                <a href="https://tidal.com/artist/70289375" target="_blank" class="platform-card">
+                    <div class="platform-icon tidal">
+                        <i class="fas fa-wave-square"></i>
+                    </div>
+                    <div class="platform-name">Tidal</div>
+                    <div class="platform-description">جودة صوت HiFi وفنانين مستقلين</div>
+                </a>
+                
+                <!-- Boomplay -->
+                <a href="https://www.boomplay.com/artists/120665505?from=search" target="_blank" class="platform-card">
+                    <div class="platform-icon boomplay">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="platform-name">Boomplay</div>
+                    <div class="platform-description">منصة موسيقية رائدة في أفريقيا</div>
+                </a>
             </div>
         </div>
     </section>
@@ -1670,69 +1735,13 @@
                 <div class="stat-label">سنة البدء</div>
             </div>
             <div class="stat-box">
-                <div class="stat-number">١٠+</div>
+                <div class="stat-number">١٣+</div>
                 <div class="stat-label">منصة عالمية</div>
             </div>
             <div class="stat-box">
                 <div class="stat-number">∞</div>
                 <div class="stat-label">طاقة إبداعية</div>
             </div>
-        </div>
-    </section>
-
-    <section id="platforms">
-        <div class="section-header">
-            <h2 class="section-title">استمع على جميع المنصات</h2>
-        </div>
-        <div class="platforms-grid">
-            <a href="https://open.spotify.com/intl-ar/artist/5OpjwqoP6EVF7DiEgxbw6N" target="_blank" class="platform-card">
-                <div class="platform-icon">
-                    <i class="fab fa-spotify"></i>
-                </div>
-                <div class="platform-name">Spotify</div>
-            </a>
-            <a href="https://music.apple.com/eg/artist/mvnnooo/1856084660?l=ar" target="_blank" class="platform-card">
-                <div class="platform-icon">
-                    <i class="fab fa-apple"></i>
-                </div>
-                <div class="platform-name">Apple Music</div>
-            </a>
-            <a href="https://play.anghami.com/artist/26394054" target="_blank" class="platform-card">
-                <div class="platform-icon">
-                    <i class="fas fa-music"></i>
-                </div>
-                <div class="platform-name">Anghami</div>
-            </a>
-            <a href="https://www.youtube.com/@MVNNOOO" target="_blank" class="platform-card">
-                <div class="platform-icon">
-                    <i class="fab fa-youtube"></i>
-                </div>
-                <div class="platform-name">YouTube</div>
-            </a>
-            <a href="https://www.tiktok.com/@mvnnooomusiceg" target="_blank" class="platform-card">
-                <div class="platform-icon">
-                    <i class="fab fa-tiktok"></i>
-                </div>
-                <div class="platform-name">TikTok</div>
-            </a>
-            <a href="https://deezer.com/artist/358069852" target="_blank" class="platform-card">
-                <div class="platform-icon">
-                    <i class="fab fa-deezer"></i>
-                </div>
-                <div class="platform-name">Deezer</div>
-            </a>
-            <a href="https://www.facebook.com/mvnnoooo" target="_blank" class="platform-card">
-                <div class="platform-icon">
-                    <i class="fab fa-facebook-f"></i>
-                </div>
-                <div class="platform-name">Facebook</div>
-            </a>
-            <a href="https://www.instagram.com/mvnnoooo/" target="_blank" class="platform-card">
-                <div class="platform-icon">
-                    <i class="fab fa-instagram"></i>
-                </div>
-                <div class="platform-name">Instagram</div>
-            </a>
         </div>
     </section>
 
@@ -1813,34 +1822,34 @@
                 <h3>MVNNOOO</h3>
                 <ul class="footer-links">
                     <li><a href="#home">الرئيسية</a></li>
-                    <li><a href="#embeds">استمع مباشرة</a></li>
+                    <li><a href="#platforms">المنصات</a></li>
                     <li><a href="#about">عن الفنان</a></li>
                     <li><a href="#stats">الإحصائيات</a></li>
-                    <li><a href="#platforms">المنصات</a></li>
                     <li><a href="#albums">ألبومات</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>المنصات</h3>
+                <h3>المنصات الموسيقية</h3>
                 <ul class="footer-links">
                     <li><a href="https://open.spotify.com/intl-ar/artist/5OpjwqoP6EVF7DiEgxbw6N" target="_blank">Spotify</a></li>
                     <li><a href="https://music.apple.com/eg/artist/mvnnooo/1856084660?l=ar" target="_blank">Apple Music</a></li>
                     <li><a href="https://play.anghami.com/artist/26394054" target="_blank">Anghami</a></li>
                     <li><a href="https://www.youtube.com/@MVNNOOO" target="_blank">YouTube</a></li>
-                    <li><a href="https://www.tiktok.com/@mvnnooomusiceg" target="_blank">TikTok</a></li>
-                    <li><a href="https://www.facebook.com/mvnnoooo" target="_blank">Facebook</a></li>
-                    <li><a href="https://www.instagram.com/mvnnoooo/" target="_blank">Instagram</a></li>
-                    <li><a href="https://music.amazon.com/embed/B0G3QG2928/?id=UnhZbg1qFF&marketplaceId=ATVPDKIKX0DER&musicTerritory=US" target="_blank">Amazon Music</a></li>
+                    <li><a href="https://tidal.com/artist/70289375" target="_blank">Tidal</a></li>
+                    <li><a href="https://deezer.com/artist/358069852" target="_blank">Deezer</a></li>
+                    <li><a href="https://www.boomplay.com/artists/120665505?from=search" target="_blank">Boomplay</a></li>
+                    <li><a href="https://music.amazon.com/artists/B0G3QG2928/mvnnooo?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_x6JSx5EZyvWdihUWBnYM6a5Mt" target="_blank">Amazon Music</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>التواصل</h3>
+                <h3>المنصات الاجتماعية</h3>
                 <ul class="footer-links">
-                    <li><a href="mailto:itsjrmano@gmail.com">itsjrmano@gmail.com</a></li>
                     <li><a href="https://www.instagram.com/mvnnoooo/" target="_blank">Instagram</a></li>
                     <li><a href="https://www.facebook.com/mvnnoooo" target="_blank">Facebook</a></li>
-                    <li><a href="https://x.com/OfficialManno_" target="_blank">Twitter</a></li>
                     <li><a href="https://www.tiktok.com/@mvnnooomusiceg" target="_blank">TikTok</a></li>
+                    <li><a href="https://x.com/OfficialManno_" target="_blank">Twitter</a></li>
+                    <li><a href="https://www.last.fm/music/MVNNOOO" target="_blank">Last.fm</a></li>
+                    <li><a href="https://genius.com/artists/Mvnnooo" target="_blank">Genius</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -1966,16 +1975,14 @@
             });
         });
         
-        // تحسين تجربة التضمينات
-        window.addEventListener('DOMContentLoaded', () => {
-            // إضافة مؤشر تحميل للتضمينات
-            const iframes = document.querySelectorAll('iframe');
-            iframes.forEach(iframe => {
-                iframe.addEventListener('load', function() {
-                    this.style.opacity = '1';
-                });
-                iframe.style.opacity = '0';
-                iframe.style.transition = 'opacity 0.5s ease';
+        // تحسين تجربة النقر على البطاقات
+        document.querySelectorAll('.platform-card, .album-card, .track-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (this.tagName === 'A') return; // إذا كان الرابط فعلاً، لا تفعل شيئاً
+                const link = this.querySelector('a');
+                if (link) {
+                    window.open(link.href, '_blank');
+                }
             });
         });
     </script>
