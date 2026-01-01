@@ -227,6 +227,28 @@
             margin-bottom: 20px;
         }
 
+        /* الوقت الحالي */
+        .current-time {
+            text-align: center;
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-xs);
+        }
+
+        .time-display {
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: 600;
+            direction: ltr;
+            display: inline-block;
+        }
+
+        .time-display .date {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
         /* أزرار التشغيل */
         .player-controls {
             display: flex;
@@ -288,6 +310,47 @@
             display: block;
             width: 100%;
             border: none;
+        }
+
+        /* تضمين Amazon Music */
+        .amazon-music-embed {
+            width: 100%;
+            margin: 25px 0;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            background: var(--card);
+            box-shadow: var(--shadow);
+        }
+
+        .amazon-music-embed iframe {
+            display: block;
+            width: 100%;
+            border: none;
+        }
+
+        /* تضمين Apple Music */
+        .apple-music-container {
+            width: 100%;
+            margin: 25px 0;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            background: var(--card);
+            box-shadow: var(--shadow);
+        }
+
+        .apple-music-embed {
+            position: relative;
+            width: 100%;
+            padding-bottom: 180%;
+        }
+
+        .apple-music-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
         /* أزرار المنصات السريعة */
@@ -752,7 +815,8 @@
                 height: 160px;
             }
             
-            .spotify-artist-embed iframe {
+            .spotify-artist-embed iframe,
+            .amazon-music-embed iframe {
                 height: 300px;
             }
         }
@@ -775,7 +839,8 @@
                 height: 220px;
             }
             
-            .spotify-artist-embed iframe {
+            .spotify-artist-embed iframe,
+            .amazon-music-embed iframe {
                 height: 400px;
             }
         }
@@ -867,6 +932,13 @@
                     <div class="artist-location">
                         <i class="fas fa-map-marker-alt"></i>
                         <span>الإسكندرية، مصر</span>
+                    </div>
+                </div>
+
+                <!-- الوقت الحالي -->
+                <div class="current-time">
+                    <div id="current-time-display" class="time-display">
+                        جاري تحميل الوقت...
                     </div>
                 </div>
 
@@ -1174,10 +1246,55 @@
                     </div>
                 </div>
 
+                <!-- تضمين Amazon Music -->
+                <div class="collapsible-section" style="margin-top: 20px;">
+                    <div class="section-header" onclick="toggleSection('amazon-music-section')">
+                        <h3 class="section-title">Amazon Music</h3>
+                        <i class="fas fa-chevron-down section-icon" id="amazon-music-section-icon"></i>
+                    </div>
+                    <div class="section-content active" id="amazon-music-section">
+                        <div class="amazon-music-embed">
+                            <iframe 
+                                id='AmazonMusicEmbedB0G3QG2928' 
+                                src='https://music.amazon.com/embed/B0G3QG2928/?id=78kppSU9cH&marketplaceId=ATVPDKIKX0DER&musicTerritory=US' 
+                                width='100%' 
+                                height='352px' 
+                                frameBorder='0' 
+                                style='border-radius:20px;max-width:100%'>
+                            </iframe>
+                        </div>
+                        <div style="text-align: center; margin-top: 15px; color: var(--gray); font-size: 0.9rem;">
+                            <p>استمع إلى موسيقى MVNNOOO على منصة Amazon Music، أحد أكبر المنصات الموسيقية في العالم.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- تضمين Apple Music -->
+                <div class="collapsible-section" style="margin-top: 20px;">
+                    <div class="section-header" onclick="toggleSection('apple-music-section')">
+                        <h3 class="section-title">Apple Music</h3>
+                        <i class="fas fa-chevron-down section-icon" id="apple-music-section-icon"></i>
+                    </div>
+                    <div class="section-content active" id="apple-music-section">
+                        <div class="apple-music-container">
+                            <div class="apple-music-embed">
+                                <iframe
+                                    src="https://embed.music.apple.com/us/artist/mvnnooo/1856084660"
+                                    style="border-radius: 20px;"
+                                    allow="encrypted-media *; fullscreen *;">
+                                </iframe>
+                            </div>
+                        </div>
+                        <div style="text-align: center; margin-top: 15px; color: var(--gray); font-size: 0.9rem;">
+                            <p>استمع إلى موسيقى MVNNOOO على منصة Apple Music، المنصة الموسيقية الرسمية من Apple.</p>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- تضمين Anghami -->
                 <div class="collapsible-section" style="margin-top: 20px;">
                     <div class="section-header" onclick="toggleSection('anghami-section')">
-                        <h3 class="section-title">استمع على Anghami</h3>
+                        <h3 class="section-title">Anghami</h3>
                         <i class="fas fa-chevron-down section-icon" id="anghami-section-icon"></i>
                     </div>
                     <div class="section-content active" id="anghami-section">
@@ -1311,23 +1428,8 @@
                         <div style="color: var(--gray); font-size: 0.9rem; line-height: 1.8;">
                             <p><strong>MVNNOOO - التطبيق الرسمي</strong></p>
                             <p>هذا التطبيق يوفر وصولاً سريعاً إلى جميع محتوى الفنان MVNNOOO على المنصات المختلفة، بما في ذلك الموسيقى، البودكاست، والمزيد.</p>
-                            
-                            <div style="margin-top: 20px;">
-                                <p><strong>مميزات التطبيق:</strong></p>
-                                <ul style="padding-right: 20px; margin-top: 10px;">
-                                    <li>تصفح سريع وسهل</li>
-                                    <li>واجهة مخصصة للجوال</li>
-                                    <li>وصول مباشر لجميع المنصات</li>
-                                    <li>قسم بودكاست حصري</li>
-                                    <li>تضمين Spotify للفنان</li>
-                                    <li>معلومات محدثة عن الفنان</li>
-                                    <li>دعم وضع عدم الاتصال</li>
-                                </ul>
-                            </div>
-                            
-                            <div style="margin-top: 20px; text-align: center;">
-                                <p>الإصدار: 1.3.0 (أضيف تضمين Spotify في الرئيسية)</p>
-                                <p style="margin-top: 10px;">© 2025 MVNNOOO. جميع الحقوق محفوظة.</p>
+                          
+                                <p style="margin-top: 10px;">© 2026 MVNNOOO. جميع الحقوق محفوظة.</p>
                             </div>
                         </div>
                     </div>
@@ -1396,6 +1498,9 @@
             
             // تحسين تضمين Anghami
             enhanceAnghamiEmbed();
+            
+            // بدء تحديث الوقت
+            startTimeUpdate();
         });
 
         // إدارة التنقل بين الصفحات
@@ -1425,7 +1530,13 @@
         // إدارة الأقسام القابلة للطي
         function setupCollapsibleSections() {
             // فتح بعض الأقسام افتراضياً
-            const defaultOpenSections = ['popular-tracks', 'about-content', 'anghami-section'];
+            const defaultOpenSections = [
+                'popular-tracks', 
+                'about-content', 
+                'amazon-music-section',
+                'apple-music-section',
+                'anghami-section'
+            ];
             defaultOpenSections.forEach(sectionId => {
                 const section = document.getElementById(sectionId);
                 const icon = document.getElementById(sectionId + '-icon');
@@ -1570,6 +1681,69 @@
                 const height = Math.max(160, (width * 190) / 600);
                 anghamiIframe.style.height = height + 'px';
             }
+        }
+
+        // نظام الوقت والتاريخ التلقائي
+        function startTimeUpdate() {
+            updateCairoTime();
+            // تحديث كل دقيقة
+            setInterval(updateCairoTime, 60000);
+        }
+
+        function updateCairoTime() {
+            const timeDisplay = document.getElementById('current-time-display');
+            if (!timeDisplay) return;
+            
+            // الحصول على الوقت الحالي بتوقيت القاهرة
+            const cairoTime = getCairoTime();
+            
+            // تنسيق الوقت باللغة العربية
+            const arabicTime = formatArabicTime(cairoTime);
+            
+            timeDisplay.innerHTML = arabicTime;
+        }
+
+        function getCairoTime() {
+            // إنشاء وقت بتوقيت القاهرة (UTC+2)
+            const now = new Date();
+            const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+            // القاهرة: UTC+2
+            const cairoTime = new Date(utc + (2 * 3600000));
+            return cairoTime;
+        }
+
+        function formatArabicTime(date) {
+            // الأيام والشهور بالعربية
+            const arabicDays = ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
+            const arabicMonths = [
+                'يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو',
+                'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'
+            ];
+            
+            const day = arabicDays[date.getDay()];
+            const dayNumber = date.getDate();
+            const month = arabicMonths[date.getMonth()];
+            const year = date.getFullYear();
+            
+            let hours = date.getHours();
+            const minutes = date.getMinutes().toString().padStart(2, '0');
+            const period = hours >= 12 ? 'مساءً' : 'صباحاً';
+            
+            // تحويل إلى 12 ساعة
+            hours = hours % 12;
+            hours = hours ? hours : 12; // الساعة 0 تصبح 12
+            
+            const timeString = `${hours}:${minutes} ${period}`;
+            const dateString = `${day} ${dayNumber} ${month} ${year}`;
+            
+            return `
+                <span class="time">${timeString}</span>
+                <span class="date"> - ${dateString}</span>
+                <br>
+                <small style="color: var(--gray); font-size: 0.8rem;">
+                    توقيت القاهرة، مصر (الإسكندرية)
+                </small>
+            `;
         }
 
         // التعامل مع وضع عدم الاتصال
