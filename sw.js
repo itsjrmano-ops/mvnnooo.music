@@ -1,14 +1,18 @@
 const CACHE_NAME = 'mvnnooo-v1';
+const OFFLINE_URL = 'offline.html';
+
 const STATIC_ASSETS = [
-    '/MVNNOOO-Website/',
-    '/MVNNOOO-Website/index.html',
-    '/MVNNOOO-Website/manifest.webmanifest',
-    '/MVNNOOO-Website/offline.html',
-    '/MVNNOOO-Website/assets/css/styles.css',
-    '/MVNNOOO-Website/assets/js/app.js'
+    '/',
+    '/index.html',
+    '/manifest.webmanifest',
+    '/offline.html',
+    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
+    'https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap',
+    'https://www2.0zz0.com/2025/12/24/11/440314758.png',
+    'https://www2.0zz0.com/2025/12/24/10/193758201.jpg'
 ];
 
-// تثبيت Service Worker
+// Install Event
 self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
@@ -20,7 +24,7 @@ self.addEventListener('install', event => {
     );
 });
 
-// تفعيل Service Worker
+// Activate Event
 self.addEventListener('activate', event => {
     event.waitUntil(
         caches.keys().then(cacheNames => {
@@ -36,25 +40,28 @@ self.addEventListener('activate', event => {
     );
 });
 
-// معالجة الطلبات
+// Fetch Event
 self.addEventListener('fetch', event => {
+    // Skip non-GET requests
+    if (event.request.method !== 'GET') return;
+    
     event.respondWith(
         caches.match(event.request)
             .then(response => {
-                // إرجاع النسخة المخزنة إذا كانت موجودة
+                // Return cached version
                 if (response) {
                     return response;
                 }
                 
-                // تحميل من الشبكة
+                // Try network
                 return fetch(event.request)
                     .then(response => {
-                        // لا نخزن الاستجابات غير الناجحة
+                        // Don't cache if not successful
                         if (!response || response.status !== 200) {
                             return response;
                         }
                         
-                        // تخزين الاستجابة في الذاكرة المؤقتة
+                        // Clone response for caching
                         const responseToCache = response.clone();
                         caches.open(CACHE_NAME)
                             .then(cache => {
@@ -63,23 +70,17 @@ self.addEventListener('fetch', event => {
                         
                         return response;
                     })
-                    .catch(error => {
-                        // عند عدم الاتصال، عرض صفحة offline
+                    .catch(() => {
+                        // If offline and navigation request, show offline page
                         if (event.request.mode === 'navigate') {
-                            return caches.match('/MVNNOOO-Website/offline.html');
+                            return caches.match(OFFLINE_URL);
                         }
-                        return new Response('No internet connection', {
+                        
+                        return new Response('لا يوجد اتصال بالإنترنت', {
                             status: 408,
-                            headers: { 'Content-Type': 'text/plain' }
+                            headers: { 'Content-Type': 'text/plain; charset=utf-8' }
                         });
                     });
             })
     );
-});
-
-// تلقي الرسائل من الصفحة
-self.addEventListener('message', event => {
-    if (event.data.action === 'skipWaiting') {
-        self.skipWaiting();
-    }
 });
