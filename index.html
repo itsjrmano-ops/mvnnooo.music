@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="mobile-web-app-capable" content="yes">
     <title>MVNNOOO | منو فنان راب مصري - الإسكندرية | Egyptian Trap & Drill Music</title>
-    <meta name="description" content="🎵 MVNNOOO - منو فنان رابر مصري من الإسكندرية. استمع إلى موسيقى التراب المصري (Egyptian Trap) والدريل (Drill) على Spotify, Apple Music, Anghami, YouTube. اكتشف أغاني 'بداية (startup)' و 'رفرش (refresh)' الآن.">
+    <meta name="description" content="🎵 MVNNOOO - منو فنان رابر مصري من الإسكندرية. استمع إلى موسيقى التراب المصري  (Egyptian Trap) والدريل (Drill) على Spotify, Apple Music, Anghami, YouTube, Shazam. اكتشف أغاني 'بداية (startup)' و 'رفرش (refresh)' الآن.">
     <style>
         * {
             margin: 0;
@@ -31,6 +31,7 @@
             --radius-xs: 8px;
             --transition: all 0.3s ease;
             --bottom-nav-height: 70px;
+            --shazam-gradient: linear-gradient(90deg, #00BFFF, #8A2BE2, #FF1493);
         }
 
         html {
@@ -312,6 +313,60 @@
             border: none;
         }
 
+        /* تضمين Shazam */
+        .shazam-artist-embed {
+            width: 100%;
+            max-width: 600px;
+            margin: 25px auto;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .shazam-artist-embed::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--shazam-gradient);
+            z-index: 1;
+        }
+
+        .shazam-artist-embed iframe {
+            width: 100%;
+            height: 600px;
+            border: 0;
+            display: block;
+        }
+
+        .shazam-header {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .shazam-title {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            background: var(--shazam-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .shazam-subtitle {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
         /* تضمين Amazon Music */
         .amazon-music-embed {
             width: 100%;
@@ -396,6 +451,11 @@
         }
         .platform-icon.deezer { color: #00C7F2; }
         .platform-icon.facebook { color: #1877F2; }
+        .platform-icon.shazam { 
+            background: var(--shazam-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
         .platform-name {
             font-size: 0.75rem;
@@ -980,6 +1040,10 @@
             .epk-title {
                 font-size: 1.5rem;
             }
+            
+            .shazam-artist-embed iframe {
+                height: 400px;
+            }
         }
 
         /* تحسينات للأجهزة ذات الشاشات الكبيرة */
@@ -1003,6 +1067,10 @@
             .spotify-artist-embed iframe,
             .amazon-music-embed iframe {
                 height: 400px;
+            }
+            
+            .shazam-artist-embed iframe {
+                height: 500px;
             }
         }
 
@@ -1128,6 +1196,26 @@
                     </iframe>
                 </div>
 
+                <!-- تضمين Shazam للفنان -->
+                <div class="shazam-artist-embed">
+                    <div class="shazam-header">
+                        <div class="shazam-title">
+                            <i class="fas fa-music"></i>
+                            Shazam Artist Profile
+                        </div>
+                        <div class="shazam-subtitle">اكتشف موسيقى MVNNOOO على Shazam</div>
+                    </div>
+                    <iframe
+                        src="https://www.shazam.com/en-us/artist/mvnnooo/1856084660"
+                        width="100%"
+                        height="600"
+                        style="border:0;"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
                 <div class="quick-platforms">
                     <a href="https://open.spotify.com/intl-ar/artist/5OpjwqoP6EVF7DiEgxbw6N" target="_blank" class="platform-btn">
                         <i class="fab fa-spotify platform-icon spotify"></i>
@@ -1136,6 +1224,10 @@
                     <a href="https://music.apple.com/eg/artist/mvnnooo/1856084660?l=ar" target="_blank" class="platform-btn">
                         <i class="fab fa-apple platform-icon apple"></i>
                         <span class="platform-name">Apple Music</span>
+                    </a>
+                    <a href="https://www.shazam.com/en-us/artist/mvnnooo/1856084660" target="_blank" class="platform-btn">
+                        <i class="fas fa-music platform-icon shazam"></i>
+                        <span class="platform-name">Shazam</span>
                     </a>
                     <a href="https://play.anghami.com/artist/26394054" target="_blank" class="platform-btn">
                         <i class="fas fa-music platform-icon anghami"></i>
@@ -1178,6 +1270,10 @@
                     <a href="https://music.apple.com/eg/artist/mvnnooo/1856084660?l=ar" target="_blank" class="platform-btn">
                         <i class="fab fa-apple platform-icon apple"></i>
                         <span class="platform-name">Apple Music</span>
+                    </a>
+                    <a href="https://www.shazam.com/en-us/artist/mvnnooo/1856084660" target="_blank" class="platform-btn">
+                        <i class="fas fa-music platform-icon shazam"></i>
+                        <span class="platform-name">Shazam</span>
                     </a>
                     <a href="https://play.anghami.com/artist/26394054" target="_blank" class="platform-btn">
                         <i class="fas fa-music platform-icon anghami"></i>
@@ -1311,11 +1407,12 @@
                 <div class="epk-section">
                     <div class="epk-header">
                         <h2 class="epk-title">MVNNOOO - Electronic Press Kit</h2>
-                        <p class="epk-subtitle">معلومات احترافية للصحافة والإعلام - Professional Press Materials</p>
+                        <p class="epk-subtitle">معلومات للصحافة والإعلام - Professional Press Materials</p>
                     </div>
                     
                     <div class="epk-tagline">
-                        "Sound from the streets, vibes for the world."
+                  "الكلام بيجيب كلام.. كان اخركو مش تمام.. كان اخركم الكلام.. اصلكم كدا معروفين."
+"Sound from the streets, vibes for the world."
                     </div>
                     
                     <div class="quick-facts">
@@ -1353,11 +1450,11 @@
                         <!-- الإحصائيات المنقولة من الصفحة الرئيسية -->
                         <div class="stats-grid">
                             <div class="stat-card">
-                                <div class="stat-number">٢٠+</div>
+                                <div class="stat-number">30+</div>
                                 <div class="stat-label">أغنية منشورة</div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-number">١٣+</div>
+                                <div class="stat-number">15+</div>
                                 <div class="stat-label">منصة عالمية</div>
                             </div>
                             <div class="stat-card">
@@ -1370,12 +1467,32 @@
                             </div>
                         </div>
                         
+                        <!-- تضمين Shazam في صفحة عن الفنان -->
+                        <div class="shazam-artist-embed" style="margin: 30px 0;">
+                            <div class="shazam-header">
+                                <div class="shazam-title">
+                                    <i class="fas fa-music"></i>
+                                    Shazam Artist Profile
+                                </div>
+                                <div class="shazam-subtitle">اكتشف موسيقى MVNNOOO على Shazam</div>
+                            </div>
+                            <iframe
+                                src="https://www.shazam.com/en-us/artist/mvnnooo/1856084660"
+                                width="100%"
+                                height="500"
+                                style="border:0;"
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+
                         <!-- معلومات إضافية من الـ EPK الأصلي -->
                         <div class="epk-content">
                             <p><strong>شركاء التوزيع:</strong> Sound On Global & RouteNote</p>
-                            <p><strong>متوفر على:</strong> Spotify, Apple Music, Anghami, Deezer, Tidal, Amazon Music, YouTube Music</p>
-                            <p><strong>تعاون بارز:</strong> HARLY</p>
-                            <p><strong>أسلوب الصوت:</strong> Dark Minimal / Street Energy / Heavy Rhythms</p>
+                            <p><strong>متوفر على:</strong> Spotify, Apple Music, Anghami, Deezer, Tidal, Amazon Music, YouTube Music, Shazam, BoomPlay, Genius, Qobuz, tiktok, instgram, facebook, iHeart</p>
+                            <p><strong>تعاون بارز:</strong> A7MED HARLY</p>
+                            <p><strong>أسلوب الصوت:</strong> Dark Minimal / Street Energy / Heavy Rhythms / Electronic shaabi</p>
                         </div>
                         
                         <!-- وسائل التواصل -->
@@ -1390,7 +1507,7 @@
                                     <i class="fab fa-instagram" style="background: linear-gradient(45deg, #833AB4, #E1306C, #FCAF45); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
                                     <span>Instagram</span>
                                 </a>
-                                <a href="https://tiktok.com/@mvnnooomusiceg" target="_blank" class="contact-btn">
+                                <a href="https://tiktok.com/@ةmvnnooo.music" target="_blank" class="contact-btn">
                                     <i class="fab fa-tiktok" style="color: #000000;"></i>
                                     <span>TikTok</span>
                                 </a>
@@ -1443,11 +1560,31 @@
                             </div>
                         </div>
                         
+                        <!-- Shazam Embed in About Section -->
+                        <div class="shazam-artist-embed" style="margin: 30px 0;">
+                            <div class="shazam-header">
+                                <div class="shazam-title">
+                                    <i class="fas fa-music"></i>
+                                    Shazam Artist Profile
+                                </div>
+                                <div class="shazam-subtitle">Discover MVNNOOO's music on Shazam</div>
+                            </div>
+                            <iframe
+                                src="https://www.shazam.com/en-us/artist/mvnnooo/1856084660"
+                                width="100%"
+                                height="500"
+                                style="border:0;"
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        
                         <!-- Additional Info from Original EPK -->
                         <div class="epk-content">
                             <p><strong>Distribution Partners:</strong> Sound On Global & RouteNote</p>
-                            <p><strong>Available On:</strong> Spotify, Apple Music, Anghami, Deezer, Tidal, Amazon Music, YouTube Music</p>
-                            <p><strong>Notable Collaboration:</strong> HARLY</p>
+                            <p><strong>Available On:</strong> Spotify, Apple Music, Anghami, Deezer, Tidal, Amazon Music, YouTube Music, Shazam, Qobuz, BoomPlay, iHeart</p>
+                            <p><strong>Notable Collaboration:</strong> A7MED HARLY</p>
                             <p><strong>Sound Style:</strong> Dark Minimal / Street Energy / Heavy Rhythms</p>
                         </div>
                         
@@ -1463,7 +1600,7 @@
                                     <i class="fab fa-instagram" style="background: linear-gradient(45deg, #833AB4, #E1306C, #FCAF45); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
                                     <span>Instagram</span>
                                 </a>
-                                <a href="https://tiktok.com/@mvnnooomusiceg" target="_blank" class="contact-btn">
+                                <a href="https://tiktok.com/@mvnnooo.music" target="_blank" class="contact-btn">
                                     <i class="fab fa-tiktok" style="color: #000000;"></i>
                                     <span>TikTok</span>
                                 </a>
@@ -1602,7 +1739,7 @@
                                 <i class="fab fa-facebook-f platform-icon facebook"></i>
                                 <span class="platform-name">Facebook</span>
                             </a>
-                            <a href="https://www.tiktok.com/@mvnnooomusiceg" target="_blank" class="platform-btn">
+                            <a href="https://www.tiktok.com/@mvnnooo.music" target="_blank" class="platform-btn">
                                 <i class="fab fa-tiktok platform-icon tiktok"></i>
                                 <span class="platform-name">TikTok</span>
                             </a>
@@ -1773,6 +1910,10 @@
                                 <i class="fab fa-apple platform-icon apple"></i>
                                 <span class="platform-name">Apple Music</span>
                             </a>
+                            <a href="https://www.shazam.com/en-us/artist/mvnnooo/1856084660" target="_blank" class="platform-btn">
+                                <i class="fas fa-music platform-icon shazam"></i>
+                                <span class="platform-name">Shazam</span>
+                            </a>
                             <a href="https://play.anghami.com/artist/26394054" target="_blank" class="platform-btn">
                                 <i class="fas fa-music platform-icon anghami"></i>
                                 <span class="platform-name">Anghami</span>
@@ -1781,7 +1922,7 @@
                                 <i class="fab fa-youtube platform-icon youtube"></i>
                                 <span class="platform-name">YouTube</span>
                             </a>
-                            <a href="https://www.tiktok.com/@mvnnooomusiceg" target="_blank" class="platform-btn">
+                            <a href="https://www.tiktok.com/@mvnnooo.music" target="_blank" class="platform-btn">
                                 <i class="fab fa-tiktok platform-icon tiktok"></i>
                                 <span class="platform-name">TikTok</span>
                             </a>
@@ -2006,7 +2147,7 @@
                 shareBtn.addEventListener('click', async () => {
                     try {
                         await navigator.share({
-                            title: 'MVNNOOO - فنان راب مصري',
+                            title: 'MVNNOOO - منو فنان راب مصري',
                             text: 'استمع إلى موسيقى MVNNOOO على جميع المنصات',
                             url: window.location.href,
                         });
